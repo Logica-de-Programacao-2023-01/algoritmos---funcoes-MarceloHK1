@@ -1,28 +1,13 @@
-package main
+package marcelo
 
-import (
-	"bufio"
-	"fmt"
-	"os"
-)
-
-func main() {
-	fmt.Print("digite uma string: ")
-	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Scan()
-	str := scanner.Text()
-
-	resultado, err := frase(str)
-	if err != nil {
-		fmt.Print("string inexistente")
-		return
+func junta(slice []string) string {
+	if len(slice) == 0 {
+		return ""
 	}
-	fmt.Print(resultado)
-}
-
-func frase(x string) (int, error) {
-	if len(x) == 0 {
-		return 0, fmt.Errorf("string inexistente")
+	frase := ""
+	for i := 0; i < len(slice); i++ {
+		frase += slice[i]
+		break
 	}
-	return len(x), nil
+	return frase
 }

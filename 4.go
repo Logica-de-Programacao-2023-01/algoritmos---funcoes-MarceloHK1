@@ -1,34 +1,18 @@
-package main
+package marcelo
 
-import "fmt"
-
-func main() {
-	var size int
-	fmt.Print("digite o tamanho do slice: ")
-	fmt.Scan(&size)
-	slice := make([]int, size)
-
-	for i := 0; i < size; i++ {
-		fmt.Print("digite o elemento", i+1, ": ")
-		fmt.Scan(&slice[i])
+func segundo(slice []int) int {
+	if len(slice) == 0 {
+		return 0
 	}
-	resultado, err := list(slice)
-	if err != nil {
-		fmt.Print("o slice é vazio")
-		return
-	}
-	fmt.Print(resultado)
-}
-
-func list(lista []int) (int, error) {
-	if len(lista) == 0 {
-		return 0, fmt.Errorf("o slice é vazio")
-	}
-	menor := lista[0]
-	for _, c := range lista {
-		if c < menor {
-			menor = c
+	maior := slice[0]
+	second := slice[0]
+	for _, i := range slice {
+		if i > maior {
+			maior = i
+			second = maior
+		} else if i > second && i != maior {
+			second = i
 		}
 	}
-	return menor, nil
+	return second
 }
